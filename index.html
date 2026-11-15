@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StockWatch</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2310151d'/><polyline points='5,22 12,15 18,19 27,8' fill='none' stroke='%2334d399' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><polyline points="4,23 12,15 18,19 28,7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h1>StockWatch</h1>
+    </div>
+    <div class="meta" id="meta">Loading…</div>
+  </header>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Filter by type">
+      <button data-filter="all" class="on">All</button>
+      <button data-filter="Stock">Stocks</button>
+      <button data-filter="ETF">ETFs</button>
+    </div>
+    <input id="search" type="search" placeholder="Search symbol or name…" autocomplete="off">
+  </div>
+
+  <main>
+    <div class="table-wrap">
+      <table id="table">
+        <thead>
+          <tr>
+            <th data-sort="rank" class="num rank">#</th>
+            <th data-sort="symbol" class="left">Name</th>
+            <th class="spark-col">30 days</th>
+            <th data-sort="price" class="num">Price</th>
+            <th data-sort="1D" class="num">1D</th>
+            <th data-sort="1W" class="num">1W</th>
+            <th data-sort="1M" class="num">1M</th>
+            <th data-sort="6M" class="num">6M</th>
+            <th data-sort="1Y" class="num">1Y</th>
+            <th data-sort="3Y" class="num">3Y</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="foot" id="foot"></p>
+  </main>
+
+  <template id="detail-tpl">
+    <tr class="detail-row">
+      <td colspan="10">
+        <div class="detail">
+          <div class="detail-head">
+            <div>
+              <div class="d-title"><span class="d-sym"></span> <span class="d-name"></span></div>
+              <div class="d-price"><span class="d-last"></span> <span class="d-chg"></span> <span class="d-range-label"></span></div>
+            </div>
+            <div class="seg ranges" role="group" aria-label="Chart range">
+              <button data-range="1D">1D</button><button data-range="1W">1W</button><button data-range="1M">1M</button><button data-range="6M">6M</button><button data-range="1Y">1Y</button><button data-range="3Y">3Y</button>
+            </div>
+          </div>
+          <div class="chart" role="img"></div>
+        </div>
+      </td>
+    </tr>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
